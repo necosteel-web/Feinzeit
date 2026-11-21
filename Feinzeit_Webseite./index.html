@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feinzeit Story-Serie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion, hushed: ein Abend im Feinzeit, eine Präsentation für den Inhaber
+   IDEA die Speisekarte des Hauses – jede Folge ein Gang: Geste, Teller, Glas, Zitat, Wirkung
+   PICTURE die beiden Folgen als kleine Hochformat-Filme, nebeneinander, direkt unter dem Wandzitat
+   COLOUR Schokoladenbraun der Wände als Grund, Gold des Logos als Akzent, Feinzeit-Grün und Creme als Karo-Bänder
+   TYPE Lora (wie in den Filmen) + Source Sans 3
+   LAYOUT Laptop: Zitat links, zwei Filme rechts; Phone: Zitat, Filme untereinander, dann die Karte */
+:root{color-scheme:dark;--bg:#22140c;--deep:#170d07;--ink:#f3e9d6;--soft:#cdbb9f;--gold:#d6ad55;--green:#1f4a34;--cream:#efe6d4;--line:rgba(214,173,85,.28)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+a{color:var(--gold)}
+.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:Lora,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1{font-size:clamp(34px,4.6vw,54px);font-style:italic;font-weight:500}
+h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:18px}
+h3{font-size:24px}
+p{margin:0 0 14px;max-width:66ch}
+.check{height:22px;background:repeating-conic-gradient(var(--green) 0 25%,var(--cream) 0 50%) 0 0/22px 22px}
+nav{position:sticky;top:0;z-index:5;background:var(--deep);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:10px max(5vw,16px)}
+nav img{height:40px;width:auto;display:block}
+nav .links{display:flex;gap:18px;flex-wrap:wrap;margin-left:auto}
+nav a{color:var(--soft);text-decoration:none;font-size:15px}
+nav a:hover,nav a:focus-visible{color:var(--gold)}
+.hero{background:var(--deep)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,4vw,64px);align-items:center}
+.hero .src{color:var(--soft);font-size:15px;margin-top:10px}
+.lead{font-size:19px;color:var(--ink);margin-top:26px}
+.films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+figure{margin:0}
+.phone{position:relative;border-radius:22px;padding:8px;background:#0d0704;border:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+video{display:block;width:100%;aspect-ratio:9/16;border-radius:15px;background:#000}
+figcaption{margin-top:12px}
+figcaption b{font-family:Lora,serif;font-size:20px;font-weight:600;display:block;color:var(--ink)}
+figcaption span{color:var(--soft);font-size:15px;font-style:italic}
+.idea{background:var(--bg)}
+.idea .wrap{max-width:1180px}
+.idea .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+blockquote{margin:0;font-family:Lora,serif;font-style:italic;font-size:clamp(22px,2.4vw,28px);line-height:1.3;color:var(--gold)}
+blockquote cite{display:block;margin-top:10px;font:15px "Source Sans 3",sans-serif;color:var(--soft);font-style:normal}
+.goal{margin-top:30px;border-left:2px solid var(--gold);padding-left:20px;font-family:Lora,serif;font-style:italic;font-size:clamp(21px,2.2vw,26px);line-height:1.35;color:var(--gold);max-width:none}
+.recipe{background:var(--green)}
+.steps{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 36px}
+.steps li{border-top:1px solid rgba(239,230,212,.35);padding-top:14px}
+.steps b{display:block;font-family:Lora,serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:6px}
+.steps span{color:#dcd2bd}
+.recipe blockquote{margin-top:36px;color:var(--cream)}
+.recipe blockquote cite{color:#cfc4ae}
+.menu .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.card{background:var(--deep);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,2.4vw,30px)}
+.menu .card:last-child{grid-column:1/-1}
+.card .no{color:var(--gold);font-size:15px}
+.card h3{margin:2px 0 6px}
+.card .tag{font-family:Lora,serif;font-style:italic;color:var(--soft);margin-bottom:14px}
+.card .watch{font-size:15px;text-decoration:none;display:inline-block;margin-bottom:12px;border-bottom:1px solid var(--gold)}
+dl{margin:16px 0 0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 16px;border-top:1px solid var(--line);padding-top:14px}
+dt{color:var(--gold);font-size:15px;padding-top:2px}
+dd{margin:0}
+dd q{font-family:Lora,serif;font-style:italic;quotes:"„" "“"}
+.format .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(28px,4vw,64px);align-items:start}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gold);font-weight:600;width:9em;white-space:nowrap}
+footer{background:var(--deep);text-align:center}
+footer img{height:84px;width:auto}
+footer p{margin:10px auto 0;color:var(--soft);font-size:15px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:900px){.hero .wrap,.format .wrap,.idea .cols{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.films{gap:12px}.phone{padding:5px;border-radius:16px}video{border-radius:12px}figcaption b{font-size:17px}.steps{grid-template-columns:minmax(0,1fr)}.menu .grid{grid-template-columns:minmax(0,1fr)}nav .links{gap:12px}nav img{height:32px}dl{grid-template-columns:minmax(0,1fr);gap:2px}dd{margin-bottom:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Abschnitte"><div class="wrap">
+  <img src="logo.png" alt="Feinzeit">
+  <div class="links"><a href="#idee">Idee</a><a href="#rezept">Rezept</a><a href="#folgen">Folgen</a><a href="#format">Format</a></div>
+</div></nav>
+
+<header class="hero band"><div class="wrap">
+  <div>
+    <h1>„Ihr bringt die Zeit, wir versüßen sie.“</h1>
+    <p class="lead">Sieben kleine Geschichten für Instagram. Ohne ein Wort, nur mit Bild und Musik. Zwei davon sind schon gezeichnet – hier zum Anschauen.</p>
+  </div>
+  <div class="films">
+    <figure id="folge-1">
+      <div class="phone"><video controls playsinline preload="metadata" poster="poster1.jpg" controlslist="nofullscreen nodownload" disablepictureinpicture><source src="folge1.mp4" type="video/mp4"></video></div>
+      <figcaption><b>Folge 1 · Der Happen</b><span>Wenn zwei sich nichts mehr zu sagen haben.</span></figcaption>
+    </figure>
+    <figure id="folge-2">
+      <div class="phone"><video controls playsinline preload="metadata" poster="poster2.jpg" controlslist="nofullscreen nodownload" disablepictureinpicture><source src="folge2.mp4" type="video/mp4"></video></div>
+      <figcaption><b>Folge 2 · Die Rechnung</b><span>Wenn ein Vater zum ersten Mal nicht zahlen darf.</span></figcaption>
+    </figure>
+  </div>
+</div></header>
+<div class="check" aria-hidden="true"></div>
+
+<section class="idea band" id="idee"><div class="wrap">
+  <h2>Die Idee</h2>
+  <div class="cols">
+    <p>Im Feinzeit geht die Zeit langsamer. Davon erzählt die Serie in kleinen Geschichten von 30 Sekunden, ohne ein Wort, nur mit Bildern und Musik.</p>
+    <p>Die Geschichten sind inspiriert von den Zitaten an den Wänden des Restaurants und von den Menschen dahinter: einem Eigentümer, der mit Leidenschaft führt, und einem Team, das sieht, bevor man etwas sagen muss.</p>
+    <p>Jede Folge zeigt Gäste in einem Moment, in dem etwas klemmt: Streit, Stolz, Erschöpfung, Einsamkeit. Das Feinzeit löst ihn – mit einem sinnlichen Teller, einer Flasche Wein voller Poesie und einer kleinen Geste voller Menschlichkeit. Ein Besuch wirkt wie eine kulinarische und menschliche Therapie.</p>
+  </div>
+  <p class="goal">Das Ziel ist Wiedererkennen. Wer eine Folge sieht, soll denken: Das kenne ich. Und: Da will ich hin.</p>
+</div></section>
+
+<section class="recipe band" id="rezept"><div class="wrap">
+  <h2 style="color:var(--cream)">Das Rezept jeder Folge</h2>
+  <p style="color:#dcd2bd">Sieben Geschichten, ein Rezept. So wird aus einzelnen Clips eine Serie, die man wiedererkennt.</p>
+  <ol class="steps" id="steps"></ol>
+  <blockquote>„Wein ist Poesie in Flaschen.“<cite>Robert Louis Stevenson</cite></blockquote>
+</div></section>
+<div class="check" aria-hidden="true"></div>
+
+<section class="menu band" id="folgen"><div class="wrap">
+  <h2>Die sieben Folgen</h2>
+  <p>Jede Folge ist ein kleiner Gang: eine Geste des Teams, ein Teller, ein Glas, ein Zitat – und was es mit den Gästen macht.</p>
+  <div class="grid" id="cards"></div>
+</div></section>
+
+<section class="format band" id="format"><div class="wrap">
+  <div>
+    <h2>Format und Umsetzung</h2>
+    <p>Die beiden gezeichneten Folgen sind der Drehplan für das Feinzeit: Jede Einstellung trägt ihre Kamera-Angabe – Einstellungsgröße, Perspektive, Bewegung. Gedreht wird mit Schauspielern und dem echten Team.</p>
+    <p>Das Angebot für Dreh und Produktion folgt separat.</p>
+  </div>
+  <div class="scroll"><table>
+    <tbody>
+      <tr><th scope="row">Format</th><td>Instagram Reels, Hochformat 9:16</td></tr>
+      <tr><th scope="row">Länge</th><td>40–46 Sekunden pro Folge</td></tr>
+      <tr><th scope="row">Sprache</th><td>keine – die Handlung erzählt, Musik trägt</td></tr>
+      <tr><th scope="row">Musik</th><td>Cool Jazz im Geist von Miles Davis: gedämpfte Trompete, Besen, Kontrabass und Klavier – entspannt und zuversichtlich, eigens komponiert und lizenzfrei</td></tr>
+      <tr><th scope="row">Besetzung</th><td>Schauspielerinnen und Schauspieler, dazu das echte Feinzeit-Team</td></tr>
+      <tr><th scope="row">Drehort</th><td>das Feinzeit, Schlüterstraße 33, 10629 Berlin</td></tr>
+      <tr><th scope="row">Vorlage</th><td>Folge 1 und 2 als animierte Storyboards mit filmischer Auflösung: je 19 Einstellungen, Schuss und Gegenschuss, Groß, Detail, Fahrten – mit Kamera-Angaben im Bild</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+<div class="check" aria-hidden="true"></div>
+
+<footer class="band">
+  <img src="logo.png" alt="Feinzeit">
+  <p>Schlüterstraße 33 · 10629 Berlin</p>
+  <p>Konzept und Regie: Neco Celik</p>
+</footer>
+
+<script>
+{
+const steps = [
+  ['Draußen eilt der Alltag.', 'Hektik, ein Konflikt, das Leben vor der Tür.'],
+  ['Das Team sieht hin.', 'Jemand vom Feinzeit erkennt die Lage und stiftet mit einer kleinen Geste den Wendepunkt.'],
+  ['Die Zeit bleibt gefühlt stehen.', 'Die Musik wird warm.'],
+  ['Der Wein glänzt.', 'Zu jedem Teller gehört ein Glas. Es ist Teil der Geschichte, kein Beiwerk.'],
+  ['Ein Zwinkern.', 'Gastfreundschaft, die nicht angibt.'],
+  ['Die Signatur.', 'Olivenöl fließt über den Hummus. Letztes Bild: die Kamera fährt aus dem Feinzeit zurück auf die Straße – die Gäste bleiben drinnen und genießen weiter. Dann Logo und Adresse.']
+];
+document.getElementById('steps').innerHTML = steps.map(([b, s]) => `<li><b>${b}</b><span>${s}</span></li>`).join('');
+
+const eps = [
+  {n:1, t:'Der Happen', tag:'Wenn zwei sich nichts mehr zu sagen haben.', video:'folge-1',
+   story:'Ein Paar nach dem Streit. Sie zögert vor der Tür, er wartet allein, die Arme verschränkt, die Blicke weg. Der Kellner stellt das Antipasti-Brett zwischen die beiden und reicht ihm die Gabel – mit einem Nicken zu ihr hin. Er hält ihr einen Happen über den Tisch. Sie beißt ab. Die Zeit bleibt gefühlt stehen, und am Ende rücken die beiden näher, bis sie sich küssen.',
+   g:'eine Gabel, gereicht im richtigen Moment', p:'Antipasti-Brett mit zehn Komponenten, in der Mitte die Burrata',
+   w:'ein Blaufränkisch aus dem Burgenland – ein Roter mit Rückgrat und weichem Herzen, wie eine gute Versöhnung',
+   q:'Man soll eher darauf achten, mit wem man isst und trinkt, als was man isst und trinkt.', qa:'Epikur, überliefert von Seneca', e:'Versöhnung'},
+  {n:2, t:'Die Rechnung', tag:'Wenn ein Vater zum ersten Mal nicht zahlen darf.', video:'folge-2',
+   story:'Papa zahlt. Immer. Er bestellt mit großer Geste und klopft sich auf die Brusttasche. Als die Rechnung kommt, hält er die Brieftasche schon hoch – doch der Kellner legt die Mappe mit einem Blick vor die Tochter. Papa will protestieren. Sie tippt nur auf das Etikett der Flasche: 1993, ihr Geburtsjahr. Er versteht. Und sie stoßen an.',
+   g:'die Rechnungsmappe, vor den richtigen Platz gelegt', p:'Wiener Schnitzel vom Kalb mit Kartoffel-Gurken-Salat und Preiselbeeren',
+   w:'Riesling Auslese 1993, Oppenheimer Sackträger aus Rheinhessen – ein Jahrgang, der so alt ist wie die Tochter',
+   q:'Denn Zeit ist Leben. Und das Leben wohnt im Herzen.', qa:'Michael Ende, <i>Momo</i>', e:'Dankbarkeit'},
+  {n:3, t:'Der Abschluss', tag:'Wenn der Erfolg keine Pause macht.',
+   story:'Drei Kolleginnen feiern einen großen Abschluss. Der Kellner serviert, und für einen Moment schauen sie sich nur an. Zum ersten Mal an diesem Tag stoßen die drei wirklich an.',
+   g:'das Servieren, das den Moment anhält', p:'Linguini Feinzeit mit Garnelen, Calamari und Miesmuscheln',
+   w:'ein Chablis aus dem Burgund – klar und mineralisch, wie ein Kopf nach Feierabend',
+   q:'Man kann nicht gut denken, gut lieben, gut schlafen, wenn man nicht gut gegessen hat.', qa:'Virginia Woolf', e:'Ankommen'},
+  {n:4, t:'Achtzehn', tag:'Wenn ein Leben neu beginnt.',
+   story:'Sie wird achtzehn. Der Tisch ist für sechs gedeckt, doch sie sitzt allein und schaut auf die Uhr. Die Freunde kommen nicht. Dann öffnet sich die Küchentür: Der Koch trägt ein Soufflé mit Kerze herein – und hinter ihm stürmen die Freunde hervor. Sie hatten die Überraschung mit dem Team geplant.',
+   g:'eine Kerze, im richtigen Moment entzündet', p:'Schoko-Soufflé mit Waldbeeren-Sorbet und Walnuss-Krokant',
+   w:'etwas Prickelndes ohne Alkohol – der erste große Wein hat noch Zeit',
+   q:'Und jedem Anfang wohnt ein Zauber inne.', qa:'Hermann Hesse, <i>Stufen</i>', e:'Zugehörigkeit'},
+  {n:5, t:'Zu zweit', tag:'Wenn Eltern zum ersten Mal wieder ein Paar sind.',
+   story:'Der erste Abend zu zweit seit Monaten. Die Babysitterin hat übernommen, doch das Handy liegt auf dem Tisch, und die Mutter schaut alle zwei Minuten darauf. Dann wird serviert, und alles kommt zur Ruhe. Jetzt dürfen auch die Eltern loslassen.',
+   g:'das Servieren, das den Kontrollzwang löst', p:'Edelgulasch vom Kalb im Schmortopf, mit Sauerteigbrot',
+   w:'ein Primitivo aus Apulien – warm und dunkel, wie ein Abend, der endlich wieder ihnen gehört',
+   q:'Do more of what makes you happy.', qa:'an der Wand im Feinzeit', e:'Loslassen'},
+  {n:6, t:'Der Mantel', tag:'Wenn man schön ist und niemand es sieht.',
+   story:'Ein neuer Mantel, ein besonderer. Sie läuft damit durch die Straßen, doch niemand schaut hin. Im Feinzeit nimmt ihr der Kellner den Mantel ab wie einen Schatz und hängt ihn an den schönsten Platz. Den ganzen Abend sieht der Mantel ihr zu, wie sie genießt. Beim Gehen hält der Kellner ihn ihr hin – und sie geht ein Stück aufrechter hinaus.',
+   g:'ein Mantel, empfangen wie ein Gast', p:'Feinzeit Auswahl – Käse und luftgetrocknetes Rindfleisch mit Früchten und Nüssen',
+   w:'Ruinart Blanc de Blancs – Champagner für einen Abend, der sich selbst feiert',
+   q:'Kleider machen Leute.', qa:'Gottfried Keller', e:'Gesehen werden'},
+  {n:7, t:'Geschlossen', tag:'Wenn die Gastgeber selbst zu Gästen werden.',
+   story:'Der letzte Abend vor Weihnachten. Die Gäste sind gegangen. Der Eigentümer dreht das Schild auf „Geschlossen“ und nimmt sich diesmal selbst die Zeit. Das Team setzt sich an einen Tisch, gemeinsam servieren sie Manti. Er schenkt allen ein. Heute sind sie die Gäste.',
+   g:'ein umgedrehtes Schild an der Tür', p:'hausgemachte Manti mit Knoblauch-Joghurt',
+   w:'ein Furmint aus Serbien – ein Wein, der von weit herkommt und doch nach Zuhause schmeckt',
+   q:'Bir fincan kahvenin kırk yıl hatırı vardır.', qa:'türkisches Sprichwort – Eine Tasse Kaffee schenkt vierzig Jahre Erinnerung.', e:'Zusammenhalt'}
+];
+document.getElementById('cards').innerHTML = eps.map(x => `
+  <article class="card">
+    <div class="no">Folge ${x.n}</div>
+    <h3>${x.t}</h3>
+    <p class="tag">${x.tag}</p>
+    ${x.video ? `<a class="watch" href="#${x.video}">Film ansehen</a>` : ''}
+    <p>${x.story}</p>
+    <dl>
+      <dt>Die Geste</dt><dd>${x.g}</dd>
+      <dt>Auf dem Teller</dt><dd>${x.p}</dd>
+      <dt>Im Glas</dt><dd>${x.w}</dd>
+      <dt>Das Zitat</dt><dd><q>${x.q}</q> — ${x.qa}</dd>
+      <dt>Die Wirkung</dt><dd>${x.e}</dd>
+    </dl>
+  </article>`).join('');
+
+// only one film plays at a time
+const vids = [...document.querySelectorAll('video')];
+vids.forEach(v => v.addEventListener('play', () => vids.forEach(o => { if (o !== v) o.pause(); })));
+}
+</script>
+</body>
+</html>
